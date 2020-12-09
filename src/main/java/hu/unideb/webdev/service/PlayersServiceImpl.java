@@ -13,7 +13,7 @@ import java.util.Collection;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class PlayerServiceImpl implements PlayersService {
+public class PlayersServiceImpl implements PlayersService {
 
     private final PlayersDao playersDao;
 
