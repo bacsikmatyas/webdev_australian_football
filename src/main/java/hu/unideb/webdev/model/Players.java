@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -13,7 +14,8 @@ import java.util.Date;
 @EqualsAndHashCode
 public class Players {
 
-    private Date dob;
+    private int id;
+    private Timestamp dob;
     private String firstName;
     private String lastName;
     private int height;
