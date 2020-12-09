@@ -25,10 +25,12 @@ import java.util.stream.Collectors;
 public class MatchesController {
     private final MatchesService service;
 
+    /*
     @GetMapping("/hello")
     public String hello(@RequestParam(name = "name", defaultValue = "World", required = false) String name){
         return String.format("Hello %s!", name);
     }
+    */
 
     @GetMapping("/matches")
     public Collection<MatchesDto> listMatches(){
@@ -80,8 +82,8 @@ public class MatchesController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping("/address")
-    public void record(@RequestBody MatchesRequestDto requestDto) {
+    @PostMapping("/matches")
+    public void recordMatch(@RequestBody MatchesRequestDto requestDto) {
         try {
             service.recordMatch(new Matches(
                     requestDto.getSeason()+"_"+requestDto.getRound()+"_"+requestDto.getTid1()+"_"+requestDto.getTid2(),
@@ -134,7 +136,7 @@ public class MatchesController {
         }
     }
 
-    @PostMapping("/address/update")
+    @PostMapping("/matches/update")
     public void updateMatch(@RequestBody MatchesRequestDto requestDto){
         try {
             service.updateMatch(new Matches(

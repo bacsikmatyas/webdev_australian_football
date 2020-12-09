@@ -40,7 +40,6 @@ public class MatchesEntity {
     private String team2Location;
 
     @Column(name = "start_dt")
-    //@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone="Europe/Berlin")
     private Timestamp startDate;
 
     private String venue;
