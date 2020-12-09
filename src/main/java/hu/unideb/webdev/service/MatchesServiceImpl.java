@@ -1,6 +1,7 @@
 package hu.unideb.webdev.service;
 
 import hu.unideb.webdev.dao.MatchesDao;
+import hu.unideb.webdev.exceptions.ExistingMatchException;
 import hu.unideb.webdev.exceptions.UnknownMatchException;
 import hu.unideb.webdev.exceptions.UnknownTeamException;
 import hu.unideb.webdev.model.Matches;
@@ -23,7 +24,7 @@ public class MatchesServiceImpl implements MatchesService {
     }
 
     @Override
-    public void recordMatch(Matches match) throws UnknownTeamException {
+    public void recordMatch(Matches match) throws UnknownTeamException, ExistingMatchException {
         matchesDao.createMatch(match);
     }
 

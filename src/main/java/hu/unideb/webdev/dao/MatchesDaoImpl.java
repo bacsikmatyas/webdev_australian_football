@@ -6,6 +6,7 @@ import hu.unideb.webdev.dao.entity.TeamsEntity;
 import hu.unideb.webdev.dao.repository.MatchesRepository;
 //import hu.unideb.webdev.dao.repository.PlayersRepository;
 import hu.unideb.webdev.dao.repository.TeamRepository;
+import hu.unideb.webdev.exceptions.ExistingMatchException;
 import hu.unideb.webdev.exceptions.UnknownMatchException;
 import hu.unideb.webdev.exceptions.UnknownTeamException;
 import hu.unideb.webdev.model.Matches;
@@ -30,8 +31,10 @@ public class MatchesDaoImpl implements MatchesDao {
     //private final PlayersRepository playersRepository;
 
     @Override
-    public void createMatch(Matches match) throws UnknownTeamException {
+    public void createMatch(Matches match) throws UnknownTeamException, ExistingMatchException {
         MatchesEntity matchesEntity;
+
+        checkMatch(match.getId());
 
         matchesEntity = MatchesEntity.builder().id(match.getId()).season(match.getSeason()).round(match.getRound())
                 .team1(queryTeam(match.getTid1())).team2(queryTeam(match.getTid2())).team1Location(match.getTid1_loc())
@@ -53,6 +56,14 @@ public class MatchesDaoImpl implements MatchesDao {
         }
         catch (Exception e){
             log.error(e.getMessage());
+        }
+    }
+
+    protected void checkMatch(String matchId) throws ExistingMatchException {
+        Optional<MatchesEntity> matchesEntity = matchesRepository.findById(matchId);
+
+        if (matchesEntity.isPresent()){
+            throw new ExistingMatchException(String.format("Match found %s",matchId));
         }
     }
 

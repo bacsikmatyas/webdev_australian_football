@@ -4,6 +4,7 @@ import hu.unideb.webdev.controller.dto.MatchesDeleteDto;
 import hu.unideb.webdev.controller.dto.MatchesDto;
 import hu.unideb.webdev.controller.dto.MatchesRequestDto;
 import hu.unideb.webdev.controller.dto.MatchesUpdateDto;
+import hu.unideb.webdev.exceptions.ExistingMatchException;
 import hu.unideb.webdev.exceptions.UnknownMatchException;
 import hu.unideb.webdev.exceptions.UnknownTeamException;
 import hu.unideb.webdev.model.Matches;
@@ -128,7 +129,7 @@ public class MatchesController {
             ));
         } catch (UnknownTeamException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        } catch (Exception e){
+        } catch (ExistingMatchException e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
