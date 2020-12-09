@@ -4,10 +4,7 @@ import hu.unideb.webdev.controller.dto.PlayersDeleteDto;
 import hu.unideb.webdev.controller.dto.PlayersDto;
 import hu.unideb.webdev.controller.dto.TeamsDeleteDto;
 import hu.unideb.webdev.controller.dto.TeamsDto;
-import hu.unideb.webdev.exceptions.ExistingPlayerException;
-import hu.unideb.webdev.exceptions.ExistingTeamException;
-import hu.unideb.webdev.exceptions.UnknownPlayerException;
-import hu.unideb.webdev.exceptions.UnknownTeamException;
+import hu.unideb.webdev.exceptions.*;
 import hu.unideb.webdev.model.Players;
 import hu.unideb.webdev.model.Teams;
 import hu.unideb.webdev.service.TeamsService;
@@ -44,7 +41,7 @@ public class TeamsController {
                     teamsDto.getId(),
                     teamsDto.getName()
             ));
-        } catch (ExistingTeamException e) {
+        } catch (ExistingTeamException | WrongValueException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
@@ -56,7 +53,7 @@ public class TeamsController {
                     teamsDto.getId(),
                     teamsDto.getName()
             ));
-        } catch (UnknownTeamException e) {
+        } catch (UnknownTeamException | WrongValueException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }

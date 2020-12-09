@@ -1,7 +1,9 @@
 package hu.unideb.webdev.exceptions;
 
 import hu.unideb.webdev.model.Matches;
+import lombok.Data;
 
+@Data
 public class ExistingMatchException extends Exception {
     private Matches match;
 

@@ -1,7 +1,9 @@
 package hu.unideb.webdev.exceptions;
 
 import hu.unideb.webdev.model.Teams;
+import lombok.Data;
 
+@Data
 public class ExistingTeamException extends Exception {
     private Teams team;
 

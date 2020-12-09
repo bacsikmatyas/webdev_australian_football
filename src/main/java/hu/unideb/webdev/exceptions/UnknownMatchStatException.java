@@ -1,7 +1,6 @@
 package hu.unideb.webdev.exceptions;
 
 import hu.unideb.webdev.model.MatchStats;
-import hu.unideb.webdev.model.Matches;
 import lombok.Data;
 
 @Data

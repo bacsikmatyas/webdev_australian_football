@@ -4,6 +4,7 @@ import hu.unideb.webdev.controller.dto.PlayersDeleteDto;
 import hu.unideb.webdev.controller.dto.PlayersDto;
 import hu.unideb.webdev.exceptions.ExistingPlayerException;
 import hu.unideb.webdev.exceptions.UnknownPlayerException;
+import hu.unideb.webdev.exceptions.WrongValueException;
 import hu.unideb.webdev.model.Players;
 import hu.unideb.webdev.service.PlayersService;
 import lombok.RequiredArgsConstructor;
@@ -47,7 +48,7 @@ public class PlayersController {
                     playersDto.getHeight(),
                     playersDto.getWeight()
             ));
-        } catch (ExistingPlayerException e) {
+        } catch (ExistingPlayerException | WrongValueException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
@@ -63,7 +64,7 @@ public class PlayersController {
                     playersDto.getHeight(),
                     playersDto.getWeight()
             ));
-        } catch (UnknownPlayerException e) {
+        } catch (UnknownPlayerException | WrongValueException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }

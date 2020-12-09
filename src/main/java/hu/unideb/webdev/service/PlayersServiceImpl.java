@@ -3,6 +3,8 @@ package hu.unideb.webdev.service;
 import hu.unideb.webdev.dao.PlayersDao;
 import hu.unideb.webdev.exceptions.ExistingPlayerException;
 import hu.unideb.webdev.exceptions.UnknownPlayerException;
+import hu.unideb.webdev.exceptions.UnknownTeamException;
+import hu.unideb.webdev.exceptions.WrongValueException;
 import hu.unideb.webdev.model.Players;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,12 +25,18 @@ public class PlayersServiceImpl implements PlayersService {
     }
 
     @Override
-    public void recordPlayer(Players player) throws ExistingPlayerException {
+    public void recordPlayer(Players player) throws ExistingPlayerException, WrongValueException {
+        if (player.getId()<=10000){
+            throw new WrongValueException(String.format("Player ID is less than or equal to 10000, ID: %d",player.getId()));
+        }
         playersDao.createPlayer(player);
     }
 
     @Override
-    public void updatePlayer(Players player) throws UnknownPlayerException {
+    public void updatePlayer(Players player) throws UnknownPlayerException, WrongValueException {
+        if (player.getId()<=10000){
+            throw new WrongValueException(String.format("Player ID is less than or equal to 10000, ID: %d",player.getId()));
+        }
         playersDao.updatePlayer(player);
     }
 

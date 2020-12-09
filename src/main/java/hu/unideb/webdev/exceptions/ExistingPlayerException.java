@@ -2,7 +2,9 @@ package hu.unideb.webdev.exceptions;
 
 
 import hu.unideb.webdev.model.Players;
+import lombok.Data;
 
+@Data
 public class ExistingPlayerException extends Exception{
     private Players player;
 
