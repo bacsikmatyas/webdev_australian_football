@@ -3,7 +3,6 @@ package hu.unideb.webdev.controller.dto;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data

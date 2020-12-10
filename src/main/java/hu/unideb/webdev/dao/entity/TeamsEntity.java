@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @Table(name="teams", schema = "AustralianFootball")
 public class TeamsEntity {
 
-    //model > repo > dao > dao impl > service > service impl
     @Id
     @Column(name = "tid")
     private int id;

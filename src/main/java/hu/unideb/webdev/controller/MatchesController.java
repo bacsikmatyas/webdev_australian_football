@@ -3,7 +3,6 @@ package hu.unideb.webdev.controller;
 import hu.unideb.webdev.controller.dto.MatchesDeleteDto;
 import hu.unideb.webdev.controller.dto.MatchesDto;
 import hu.unideb.webdev.controller.dto.MatchesRequestDto;
-import hu.unideb.webdev.controller.dto.MatchesUpdateDto;
 import hu.unideb.webdev.exceptions.ExistingMatchException;
 import hu.unideb.webdev.exceptions.UnknownMatchException;
 import hu.unideb.webdev.exceptions.UnknownTeamException;
@@ -24,13 +23,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class MatchesController {
     private final MatchesService service;
-
-    /*
-    @GetMapping("/hello")
-    public String hello(@RequestParam(name = "name", defaultValue = "World", required = false) String name){
-        return String.format("Hello %s!", name);
-    }
-    */
 
     @GetMapping("/matches")
     public Collection<MatchesDto> listMatches(){
@@ -129,9 +121,7 @@ public class MatchesController {
                     requestDto.getA_etb(),
                     requestDto.getTarget()
             ));
-        } catch (UnknownTeamException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        } catch (ExistingMatchException e){
+        } catch (UnknownTeamException | ExistingMatchException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
@@ -184,8 +174,6 @@ public class MatchesController {
                     requestDto.getTarget()
             ));
         } catch (UnknownMatchException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        } catch (Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }

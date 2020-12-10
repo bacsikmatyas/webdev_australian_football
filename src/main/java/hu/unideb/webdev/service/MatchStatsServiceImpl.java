@@ -1,10 +1,8 @@
 package hu.unideb.webdev.service;
 
 import hu.unideb.webdev.dao.MatchStatsDao;
-import hu.unideb.webdev.dao.entity.MatchStatsId;
 import hu.unideb.webdev.exceptions.*;
 import hu.unideb.webdev.model.MatchStats;
-import hu.unideb.webdev.model.Matches;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,7 +15,6 @@ import java.util.Collection;
 public class MatchStatsServiceImpl implements MatchStatsService {
 
     private final MatchStatsDao matchStatsDao;
-
 
     @Override
     public Collection<MatchStats> getAllMatchStats() {

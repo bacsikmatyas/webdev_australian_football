@@ -1,12 +1,9 @@
 package hu.unideb.webdev.dao;
 
-import hu.unideb.webdev.dao.entity.PlayersEntity;
 import hu.unideb.webdev.dao.entity.TeamsEntity;
 import hu.unideb.webdev.dao.repository.TeamRepository;
 import hu.unideb.webdev.exceptions.ExistingTeamException;
-import hu.unideb.webdev.exceptions.UnknownPlayerException;
 import hu.unideb.webdev.exceptions.UnknownTeamException;
-import hu.unideb.webdev.model.Players;
 import hu.unideb.webdev.model.Teams;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

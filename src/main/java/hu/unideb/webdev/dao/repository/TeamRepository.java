@@ -6,8 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public interface TeamRepository extends CrudRepository<TeamsEntity, Integer> {
-
-
     @Override
     Optional<TeamsEntity> findById(Integer id);
 }

@@ -1,11 +1,8 @@
 package hu.unideb.webdev.controller;
 
-import hu.unideb.webdev.controller.dto.PlayersDeleteDto;
-import hu.unideb.webdev.controller.dto.PlayersDto;
 import hu.unideb.webdev.controller.dto.TeamsDeleteDto;
 import hu.unideb.webdev.controller.dto.TeamsDto;
 import hu.unideb.webdev.exceptions.*;
-import hu.unideb.webdev.model.Players;
 import hu.unideb.webdev.model.Teams;
 import hu.unideb.webdev.service.TeamsService;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.stream.Collectors;
 

@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 
 //https://www.baeldung.com/spring-jpa-embedded-method-parameters
-// kettős kulcs megoldás
+//kettős kulcs megoldás
 @Data
 @Builder
 @AllArgsConstructor

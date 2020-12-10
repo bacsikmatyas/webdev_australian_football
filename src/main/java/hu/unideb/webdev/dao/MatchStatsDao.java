@@ -1,6 +1,5 @@
 package hu.unideb.webdev.dao;
 
-import hu.unideb.webdev.dao.entity.MatchStatsId;
 import hu.unideb.webdev.exceptions.*;
 import hu.unideb.webdev.model.MatchStats;
 

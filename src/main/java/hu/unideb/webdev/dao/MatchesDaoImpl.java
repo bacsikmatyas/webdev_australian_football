@@ -2,9 +2,7 @@ package hu.unideb.webdev.dao;
 
 import hu.unideb.webdev.dao.entity.MatchesEntity;
 import hu.unideb.webdev.dao.entity.TeamsEntity;
-//import hu.unideb.webdev.dao.repository.MatchStatsRepository;
 import hu.unideb.webdev.dao.repository.MatchesRepository;
-//import hu.unideb.webdev.dao.repository.PlayersRepository;
 import hu.unideb.webdev.dao.repository.TeamRepository;
 import hu.unideb.webdev.exceptions.ExistingMatchException;
 import hu.unideb.webdev.exceptions.UnknownMatchException;
@@ -19,16 +17,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-//validálás ha adatbázishoz köthető dao egyébként service
-
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class MatchesDaoImpl implements MatchesDao {
     private final MatchesRepository matchesRepository;
-    //private final MatchStatsRepository matchStatsRepository;
     private final TeamRepository teamRepository;
-    //private final PlayersRepository playersRepository;
 
     @Override
     public void createMatch(Matches match) throws UnknownTeamException, ExistingMatchException {
@@ -75,7 +69,6 @@ public class MatchesDaoImpl implements MatchesDao {
         }
 
         return teamsEntity.get();
-
     }
 
     @Override

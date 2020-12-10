@@ -3,7 +3,6 @@ package hu.unideb.webdev.service;
 import hu.unideb.webdev.dao.PlayersDao;
 import hu.unideb.webdev.exceptions.ExistingPlayerException;
 import hu.unideb.webdev.exceptions.UnknownPlayerException;
-import hu.unideb.webdev.exceptions.UnknownTeamException;
 import hu.unideb.webdev.exceptions.WrongValueException;
 import hu.unideb.webdev.model.Players;
 import lombok.RequiredArgsConstructor;

@@ -2,7 +2,6 @@ package hu.unideb.webdev.controller;
 
 import hu.unideb.webdev.controller.dto.MatchStatsDeleteDto;
 import hu.unideb.webdev.controller.dto.MatchStatsDto;
-import hu.unideb.webdev.dao.entity.MatchStatsId;
 import hu.unideb.webdev.exceptions.*;
 import hu.unideb.webdev.model.MatchStats;
 import hu.unideb.webdev.service.MatchStatsService;
@@ -89,13 +88,7 @@ public class MatchStatsController {
                     matchStatsDto.getGA(),
                     matchStatsDto.getPP()
             ));
-        } catch (UnknownMatchException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        } catch (UnknownPlayerException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        } catch (ExistingMatchStatException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        } catch (UnknownTeamException e) {
+        } catch (UnknownMatchException | UnknownPlayerException | ExistingMatchStatException | UnknownTeamException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
@@ -133,13 +126,7 @@ public class MatchStatsController {
                             matchStatsDto.getPP()
 
             ));
-        } catch (UnknownMatchException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        } catch (UnknownPlayerException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        } catch (UnknownTeamException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        } catch (UnknownMatchStatException e) {
+        } catch (UnknownMatchException | UnknownPlayerException | UnknownTeamException | UnknownMatchStatException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
@@ -148,11 +135,7 @@ public class MatchStatsController {
     public void deleteMatchStat(@RequestBody MatchStatsDeleteDto matchStatsDto){
         try {
             service.deleteMatchStat(matchStatsDto.getMid(),matchStatsDto.getPid());
-        } catch (UnknownPlayerException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        } catch (UnknownMatchStatException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        } catch (UnknownMatchException e) {
+        } catch (UnknownPlayerException | UnknownMatchStatException | UnknownMatchException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
